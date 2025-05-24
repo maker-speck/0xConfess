@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Terminal of Truths - Main</title>
+  <style>
+    body {
+      background-color: black;
+      color: red;
+      font-family: monospace;
+      margin: 0;
+      padding: 2em;
+    }
+    nav a {
+      margin-right: 1em;
+      color: red;
+      text-decoration: none;
+    }
+    nav a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <a href="#home">Home</a>
+    <a href="#meme">Meme Market</a>
+    <a href="#eco">Eco-Kink</a>
+    <a href="#confess">Confess</a>
+    <a href="#sound">Soundtrack</a>
+  </nav>
+  <div id="content">Loading...</div>
+  <script>
+    async function loadContent(page) {
+      const res = await fetch(page);
+      const text = await res.text();
+      document.getElementById('content').innerHTML = text;
+    }
+
+    function router() {
+      const route = location.hash.substring(1);
+      switch(route) {
+        case "meme":
+          loadContent("meme_market.html");
+          break;
+        case "eco":
+          loadContent("eco_kink.html");
+          break;
+        case "confess":
+          loadContent("index.html");
+          break;
+        case "sound":
+          loadContent("soundtrack.html");
+          break;
+        default:
+          document.getElementById('content').innerHTML = "<h1>Welcome to TRUTH</h1><p>Select a section above.</p>";
+      }
+    }
+
+    window.addEventListener("hashchange", router);
+    window.addEventListener("load", router);
+  </script>
+</body>
+</html>

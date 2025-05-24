@@ -1,0 +1,27 @@
+.eco {
+  background-color: #000;
+  color: #0f0;
+  font-family: monospace;
+  padding: 2em;
+}
+form {
+  display: flex;
+  flex-direction: column;
+}
+input, textarea {
+  margin-bottom: 1em;
+  background: #111;
+  color: #0f0;
+  border: 1px solid #0f0;
+  padding: 0.5em;
+}
+button {
+  background: #0f0;
+  color: black;
+  border: none;
+  padding: 0.5em;
+  cursor: pointer;
+}
+button:hover {
+  background: #0c0;
+}

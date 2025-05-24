@@ -1,0 +1,9 @@
+{
+  "name": "Goatse Ball #1",
+  "description": "A sacred NFT from the Terminal of Truths. Only the bold may gaze upon it.",
+  "image": "ipfs://goatse_ball_placeholder",
+  "attributes": [
+    { "trait_type": "Rarity", "value": "Legendary" },
+    { "trait_type": "Event", "value": "Goatse Games" }
+  ]
+}

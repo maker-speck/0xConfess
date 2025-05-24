@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>TRUTH Meme Generator</title>
+  <style>
+    body { background: black; color: red; font-family: monospace; text-align: center; }
+    canvas { margin-top: 2em; border: 2px solid red; }
+  </style>
+</head>
+<body>
+  <h1>Create Your Meme</h1>
+  <input type="text" id="topText" placeholder="Top text"><br>
+  <input type="text" id="bottomText" placeholder="Bottom text"><br>
+  <input type="file" id="imageUpload"><br>
+  <canvas id="memeCanvas" width="500" height="500"></canvas>
+  <script>
+    const canvas = document.getElementById('memeCanvas');
+    const ctx = canvas.getContext('2d');
+    document.getElementById('imageUpload').addEventListener('change', function(e) {
+      const reader = new FileReader();
+      reader.onload = function(event) {
+        const img = new Image();
+        img.onload = () => {
+          ctx.clearRect(0, 0, canvas.width, canvas.height);
+          ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+        };
+        img.src = event.target.result;
+      };
+      reader.readAsDataURL(e.target.files[0]);
+    });
+
+    document.getElementById('topText').addEventListener('input', drawText);
+    document.getElementById('bottomText').addEventListener('input', drawText);
+
+    function drawText() {
+      const top = document.getElementById('topText').value;
+      const bottom = document.getElementById('bottomText').value;
+      ctx.font = "30px monospace";
+      ctx.fillStyle = "white";
+      ctx.textAlign = "center";
+      ctx.fillText(top, canvas.width/2, 40);
+      ctx.fillText(bottom, canvas.width/2, canvas.height - 20);
+    }
+  </script>
+</body>
+</html>

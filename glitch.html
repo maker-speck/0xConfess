@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>GLITCH</title>
+  <style>
+    body {
+      background: black;
+      color: white;
+      font-family: monospace;
+      text-align: center;
+      padding-top: 20vh;
+      animation: glitch 2s infinite;
+    }
+    @keyframes glitch {
+      0% { color: red; }
+      50% { color: white; }
+      100% { color: #0ff; }
+    }
+  </style>
+</head>
+<body>
+  <h1>𓂀 THE GLITCH KNOWS</h1>
+  <p>You have reached the anti-terminal. All truths collapse here.</p>
+  <div id="arg-clue"></div>
+  <button onclick="showClue()">Reveal ARG Hook</button>
+  <script src="arg_hook.js"></script>
+</body>
+</html>
