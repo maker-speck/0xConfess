@@ -1,16 +1,78 @@
 <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Terminal of Truths</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="style.css">
+  <title>0xConfess</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    body { background: #000; color: #ff4444; font-family: monospace; margin:0; padding:0; }
+    nav { background: #111; padding:1em; display:flex; justify-content:center; }
+    nav a { margin:0 .5em; color:#ff4444; text-decoration:none; cursor:pointer; font-weight:bold; }
+    nav a:hover { text-decoration:underline; }
+    main { padding:2em; max-width:800px; margin:auto; }
+    section { display:none; }
+    section.active { display:block; }
+    button, input, textarea { background:#111; color:#ff4444; border:1px solid #ff4444; padding:.5em; margin:1em 0; width:100%; }
+    h1,h2 { color:#ff4444; }
+  </style>
 </head>
 <body>
-  <div class="terminal">
-    <div class="output">Welcome to the Terminal of Truths</div>
-    <input type="text" class="input" placeholder="> confess your truth...">
-  </div>
-  <script src="script.js"></script>
+  <nav>
+    <a onclick="show('home')">Home</a>
+    <a onclick="show('confess')">Confess</a>
+    <a onclick="show('meme')">Meme</a>
+    <a onclick="show('eco')">Eco-Kink</a>
+    <a onclick="show('xp')">XP</a>
+    <a onclick="show('glitch')">Glitch</a>
+  </nav>
+  <main>
+    <section id="home" class="active">
+      <h1>Welcome to 0xConfess</h1>
+      <p>Choose your sin, stake your truth.</p>
+    </section>
+    <section id="confess">
+      <h2>Confession Terminal</h2>
+      <textarea placeholder="Enter your confession..."></textarea>
+      <button onclick="alert('Submitted!')">Submit</button>
+    </section>
+    <section id="meme">
+      <h2>Meme Market</h2>
+      <button onclick="alert('Invested')">Invest</button>
+    </section>
+    <section id="eco">
+      <h2>Eco-Kink Hackathon</h2>
+      <input placeholder="Project Title"><br>
+      <textarea placeholder="Idea description"></textarea>
+      <button onclick="alert('Idea sent')">Send</button>
+    </section>
+    <section id="xp">
+      <h2>Your XP</h2>
+      <p>Level: <span id="lvl">1</span> | XP: <span id="xp">0</span></p>
+      <button onclick="addXP(50)">Gain 50 XP</button>
+    </section>
+    <section id="glitch">
+      <h2>The Glitch</h2>
+      <button onclick="showClue()">Reveal Clue</button>
+      <p id="clue"></p>
+    </section>
+  </main>
+  <script>
+    function show(id) {
+      document.querySelectorAll('main section').forEach(s => s.classList.remove('active'));
+      document.getElementById(id).classList.add('active');
+    }
+    let xp=0, lvl=1;
+    function addXP(a) {
+      xp+=a;
+      if (xp>=lvl*100) { xp-=lvl*100; lvl++; }
+      document.getElementById('xp').textContent=xp;
+      document.getElementById('lvl').textContent=lvl;
+    }
+    function showClue(){
+      const clips = ['Clue A','Clue B','Clue C'];
+      document.getElementById('clue').textContent = clips[Math.floor(Math.random()*clips.length)];
+    }
+  </script>
 </body>
 </html>
